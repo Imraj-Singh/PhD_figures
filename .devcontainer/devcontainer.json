@@ -1,0 +1,15 @@
+{
+	"name": "PhD Figures Container",
+	"build": {
+	  "dockerfile": "Dockerfile",
+	  "context": ".."
+	},
+	//"image": "pytorch/pytorch:latest",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/user/torch,type=bind",
+	"workspaceFolder": "/home/user/torch",
+	"forwardPorts": [9002,9999,8890],
+	"runArgs": ["--gpus=all","--init","--network=host","--shm-size=5gb"],
+	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+	"hostRequirements": {"cpus": 16, "memory": "32gb", "storage": "64gb"},
+	"extensions": ["ms-python.python","ms-toolsai.jupyter","github.copilot","eamodio.gitlens","esbenp.prettier-vscode","mhutchie.git-graph","ms-python.black-formatter"],
+}
